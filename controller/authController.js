@@ -3,6 +3,8 @@ const User = require("../models/user")
 const bcrypt = require("bcryptjs")
 const pPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,25}$/;
 
+const UserDTO  = require("../dto/user")
+
 const authController = {
   // user registration
   async register(req,res,next) {
@@ -66,8 +68,8 @@ const authController = {
         name
        })
        await userRegistration.save();
-
-       return res.status(201).json({userRegistration})
+       const userDto = new UserDTO(userRegistration)
+       return res.status(200).json({userDto})
 
 
       }
@@ -120,7 +122,9 @@ const authController = {
      catch(error){
          return next(error)
      }
-     return res.status(200).json({user})
+
+     const userDto = new UserDTO(user)
+     return res.status(200).json({userDto})
   }
 
 
