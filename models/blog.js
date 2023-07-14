@@ -15,9 +15,8 @@ const blogSchema = new Schema({
         required: true
     },
 
-    auther: {
-        type: mongoose.SchemaTypes.ObjectId, ref: "users"
-    }
+    author: {type: mongoose.SchemaTypes.ObjectId, ref: 'User'}
+
 }, {
     timestamps: true
 });

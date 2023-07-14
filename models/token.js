@@ -7,7 +7,7 @@ const refreshTokenSchema = new Schema({
         type: String,
         required: true
     },
-    userId: { type: mongoose.SchemaTypes.ObjectId, refer: "users" }
+    userId: { type: mongoose.SchemaTypes.ObjectId, refer: "User" }
 
 }, {
     timestamps: true
