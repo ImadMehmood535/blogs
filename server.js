@@ -14,6 +14,7 @@ app.use(express.json());
 app.use(router)
 //error handling
 app.use(errorHandler);
+app.use("/storage",express.static("storage"))
 
 //database and server asynchronusly
 ;(async () =>{
