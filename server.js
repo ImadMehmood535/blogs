@@ -5,10 +5,23 @@ const {PORT} = require("./config/index");
 const router = require("./routes/index");
 const errorHandler = require("./middleware/errorHandler")
 const cookieParser = require("cookie-parser")
+const cors = require("cors");
 
+// const corsOptions = {
+//     Credentials:true,
+//     origin:["http://localhost:3000"],
+// }
 
 app.use(cookieParser());
-
+app.use(
+    cors({
+      origin: function (origin, callback) {
+        return callback(null, true);
+      },
+      optionsSuccessStatus: 200,
+      credentials: true,
+    })
+  );
 app.use(express.json());
 
 app.use(router)
